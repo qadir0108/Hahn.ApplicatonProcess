@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/dotnet/sdk:5.0
+ARG BUILD_CONFIGURATION=Debug
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_URLS=http://+:80
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+EXPOSE 80
+
+WORKDIR /src
+COPY ["Hahn.ApplicatonProcess.July2021.Data/Hahn.ApplicatonProcess.July2021.Data.csproj", "Hahn.ApplicatonProcess.July2021.Data/"]
+COPY ["Hahn.ApplicatonProcess.July2021.Domain/Hahn.ApplicatonProcess.July2021.Domain.csproj", "Hahn.ApplicatonProcess.July2021.Domain/"]
+COPY ["Hahn.ApplicatonProcess.July2021.Web/Hahn.ApplicatonProcess.July2021.Web.csproj", "Hahn.ApplicatonProcess.July2021.Web/"]
+
+RUN dotnet restore "Hahn.ApplicatonProcess.July2021.Web/Hahn.ApplicatonProcess.July2021.Web.csproj"
+COPY . .
+WORKDIR "/src/Hahn.ApplicatonProcess.July2021.Web"
+RUN dotnet build --no-restore "Hahn.ApplicatonProcess.July2021.Web.csproj" -c $BUILD_CONFIGURATION
+
+RUN echo "exec dotnet run --no-build --no-launch-profile -c $BUILD_CONFIGURATION --" > /entrypoint.sh
+
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
