@@ -26,6 +26,21 @@ namespace Hahn.ApplicatonProcess.July2021.Web.Controllers
             this._mapper = mapper;
         }
 
+        // GET: api/Assets/remote
+        /// <summary>
+        /// Get All Remote Assets
+        /// </summary>
+        /// <returns>Returns a list of all remote assets</returns>
+        /// <response code="200">Returned if the data loaded</response>
+        /// <response code="400">Returned if the data couldn't be loaded</response>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpGet("remote")]
+        public async Task<ActionResult<IEnumerable<AssetVm>>> GetRemoteAssets()
+        {
+            return _mapper.Map<List<AssetVm>>(_uow.RemoteAssetsRepository.GetAll());
+        }
+
         // POST: api/Assets
         /// <summary>
         /// Add New Local Asset

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FluentValidation.AspNetCore;
 using Hahn.ApplicatonProcess.July2021.Data.Entities;
+using Hahn.ApplicatonProcess.July2021.Data.Remote;
 using Hahn.ApplicatonProcess.July2021.Domain.Models;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +32,8 @@ namespace Hahn.ApplicatonProcess.July2021.Domain
             configurationProvider.CreateMap<UserVm, User>().ReverseMap();
             configurationProvider.CreateMap<AssetVm, Asset>().ReverseMap();
             configurationProvider.CreateMap<AddressVm, Address>().ReverseMap();
+            configurationProvider.CreateMap<AssetVm, RemoteAsset>().ReverseMap();
+
         }
 
         public static void UseFluentValidators(this FluentValidationMvcConfiguration fluentConfiguration)
