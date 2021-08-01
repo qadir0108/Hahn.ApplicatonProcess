@@ -2,8 +2,21 @@ version: '3.4'
 
 services:
 
-  hahn.applicatonprocess.july2021.web:
+  hahnwebapp:
+    image: ${DOCKER_REGISTRY-}hahnwebapp
+    container_name: hahnwebapp
+    build:
+      context: .
+      dockerfile: src/Hahn.ApplicatonProcess.July2021.App/Dockerfile
+    restart: on-failure
+    depends_on:
+      - hahnwebapi
+    ports:
+      - "5002:80"
+
+  hahnwebapi:
     image: ${DOCKER_REGISTRY-}hahnwebapi
+    container_name: hahnwebapi
     build:
       context: .
       dockerfile: src/Hahn.ApplicatonProcess.July2021.Web/Dockerfile
@@ -16,6 +29,7 @@ services:
 
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: hahnwebdatabase
     hostname: 'sqlserver'  
     environment: 
       ACCEPT_EULA: 'Y'  

@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  hahn.applicatonprocess.july2021.web:
+  hahnwebapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
