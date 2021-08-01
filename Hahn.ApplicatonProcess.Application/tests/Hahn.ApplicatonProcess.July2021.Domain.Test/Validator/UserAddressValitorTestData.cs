@@ -18,7 +18,7 @@ namespace Hahn.ApplicatonProcess.July2021.Domain.Test.Validator
                 {
                   HouseNumber = "51-B",
                   Street = "15",
-                  PostalCode = 1234,
+                  PostalCode = "1234",
                 }
             };
         }
