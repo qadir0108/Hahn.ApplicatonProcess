@@ -41,7 +41,7 @@ namespace Hahn.ApplicatonProcess.July2021.Web.ApiControllers
                 FirstName = "Kamran",
                 LastName = "Qadir",
                 Email = "qadir0108@hotmail.com",
-                Address = new Data.Entities.Address() { HouseNumber = "51/B", Street = "15", PostalCode = 1234 },
+                Address = new Data.Entities.Address() { HouseNumber = "51/B", Street = "15", PostalCode = "1234" },
                 Assets = new List<Data.Entities.Asset> {
                     new Data.Entities.Asset()
                     {

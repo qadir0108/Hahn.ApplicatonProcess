@@ -12,7 +12,7 @@ namespace Hahn.ApplicatonProcess.July2021.Domain.Validators
     {
         public UserValidator()
         {
-            RuleFor(x => x.Age).Cascade(CascadeMode.Stop).GreaterThan(18).WithMessage("{PropertyName} must be at greater then 18");
+            RuleFor(x => x.Age).Cascade(CascadeMode.Stop).GreaterThan(18).WithMessage("{PropertyName} must be greater then 18");
             RuleFor(x => x.FirstName).Cascade(CascadeMode.Stop).NotEmpty().WithMessage("{PropertyName} is required.").MinimumLength(3).WithMessage("{PropertyName} must be at least 3 characters");
             RuleFor(x => x.LastName).Cascade(CascadeMode.Stop).NotEmpty().WithMessage("{PropertyName} is required.").MinimumLength(3).WithMessage("{PropertyName} must be at least 3 characters");
             //RuleFor(x => x.Email).Cascade(CascadeMode.Stop).EmailAddress().WithMessage("Please enter valid email address");

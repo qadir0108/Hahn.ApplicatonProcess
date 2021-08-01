@@ -27,22 +27,30 @@ namespace Hahn.ApplicatonProcess.July2021.Domain.Command
             if (user == null)
                 throw new System.Exception($"User with id: {request.UserId} not found.");
 
-            user.Assets.Clear();
-            foreach (var assetId in request.AssetIds)
+            var asset = await GetAsset(request.AssetId);
+            if (request.TrackUntrack)
             {
-                var asset = await _uow.AssetsRepository.GetByIdAsync(assetId);
-                if (asset == null)
-                {
-                    var remoteAsset = _uow.RemoteAssetsRepository.GetAll().SingleOrDefault(x => x.id == assetId);
-                    if (remoteAsset == null) throw new System.Exception($"Remote Asset with id: {assetId} not found.");
-                    await _uow.AssetsRepository.AddAsync(new Asset() { Id = remoteAsset.id, Symbol = remoteAsset.symbol, Name = remoteAsset.name });
-                    await _uow.SaveChangesAsync();
-                    asset = await _uow.AssetsRepository.GetByIdAsync(assetId);
-                }
                 user.Assets.Add(asset);
+            } else
+            {
+                user.Assets.Remove(asset);
             }
             _uow.UsersRepository.Update(user);
             return await _uow.SaveChangesAsync();
+        }
+
+        private async Task<Asset> GetAsset(string assetId)
+        {
+            var asset = await _uow.AssetsRepository.GetByIdAsync(assetId);
+            if (asset == null)
+            {
+                var remoteAsset = _uow.RemoteAssetsRepository.GetAll().SingleOrDefault(x => x.id == assetId);
+                if (remoteAsset == null) throw new System.Exception($"Remote Asset with id: {assetId} not found.");
+                await _uow.AssetsRepository.AddAsync(new Asset() { Id = remoteAsset.id, Symbol = remoteAsset.symbol, Name = remoteAsset.name });
+                await _uow.SaveChangesAsync();
+                asset = await _uow.AssetsRepository.GetByIdAsync(assetId);
+            }
+            return asset;
         }
     }
 }

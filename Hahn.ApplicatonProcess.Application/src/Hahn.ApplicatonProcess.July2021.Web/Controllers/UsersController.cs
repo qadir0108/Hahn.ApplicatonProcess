@@ -167,10 +167,10 @@ namespace Hahn.ApplicatonProcess.July2021.Web.ApiControllers
         }
 
         /// <summary>
-        /// TRACK ASSET for a given user id, a list of AssetIds to track
+        /// TRACK ASSET for a given user id and asset id with flag to either track or un-track
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="AssetIds">Assets</param>
+        /// <param name="vm">userId, assetId, trackUntrack</param>
+        /// <remarks>trackUntrack is bool value, for tracking trackUntrack=true, it will start tracking </remarks>
         /// <returns>Returns the created user</returns>
         /// <response code="200">Returned if the assets tracked</response>
         /// <response code="400">Returned if the model couldn't be parsed or the user couldn't be saved</response>
@@ -178,15 +178,16 @@ namespace Hahn.ApplicatonProcess.July2021.Web.ApiControllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
-        [HttpPost("{id}/track")]
-        public async Task<ActionResult> Track(int id, [FromBody]List<string> AssetIds)
+        [HttpPost("trackasset")]
+        public async Task<ActionResult> Track([FromBody] TrackDataVm vm)
         {
             try
             {
                 await _mediator.Send(new TrackAssetCommand()
                 {
-                    UserId = id,
-                    AssetIds = AssetIds
+                    UserId = vm.userId,
+                    AssetId = vm.assetId,
+                    TrackUntrack = vm.trackUntrack
                 });
                 return Ok();
             }

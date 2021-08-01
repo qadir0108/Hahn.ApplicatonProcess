@@ -43,7 +43,7 @@ namespace Hahn.ApplicatonProcess.July2021.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     HouseNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PostalCode = table.Column<int>(type: "int", nullable: false),
+                    PostalCode = table.Column<int>(type: "nvarchar(max)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

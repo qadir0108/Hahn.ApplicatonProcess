@@ -12,7 +12,7 @@ namespace Hahn.ApplicatonProcess.July2021.Data.Entities
         public int Id { get; set; }
         public string HouseNumber { get; set; }
         public string Street { get; set; }
-        public int PostalCode { get; set; }
+        public string PostalCode { get; set; }
 
         public int UserId { get; set; }
         public User User { get; set; }
