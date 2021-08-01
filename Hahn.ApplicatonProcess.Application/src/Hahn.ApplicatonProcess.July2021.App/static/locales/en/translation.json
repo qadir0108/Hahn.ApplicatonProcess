@@ -1,0 +1,20 @@
+{
+  "btnProfile": "Profile",
+  "lblProfile": "Create Profile",
+  "btnHome": "Home",
+  "lblHome": "Home",
+  "btnTrack": "Track",
+  "lblTrack": "Track Asset",
+  "btnLive": "Live",
+  "lblLive": "View Live Assets",
+  "profile": {
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "EMailAddress": "E-Mail",
+    "Age": "Age",
+    "HouseNumber": "House Number",
+    "Street": "Street",
+    "PostalCode": "Postal Code"
+  }
+  
+}

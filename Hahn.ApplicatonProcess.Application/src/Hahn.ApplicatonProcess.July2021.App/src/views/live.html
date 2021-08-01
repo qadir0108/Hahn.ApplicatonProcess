@@ -1,0 +1,47 @@
+<template>
+  <div class="container-fluid">
+    <compose view-model="./header"></compose>
+    <div class="row">
+      <div class="col-md-12">
+        
+        <div class="table-responsive">
+          <table class="table table-striped" datavalue.bind="liveassets">
+            <thead class="thead-dark">
+              <tr>
+                <th>Id</th>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Rank</th>
+                <th>Supply</th>
+                <th>Max Supply</th>
+                <th>Market Cap $</th>
+                <th>Volume $ 24Hr</th>
+                <th>Price $</th>
+                <th>Change% 24Hr</th>
+                <th>VWAP 24Hr</th>
+              </tr>
+            </thead>
+
+            <tbody if.bind="liveassets.length">
+              <tr repeat.for="liveasset of liveassets">
+                <td>${liveasset.id}</td>
+                <td>${liveasset.symbol}</td>
+                <td>${liveasset.name}</td>
+                <td>${liveasset.rank}</td>
+                <td>${liveasset.supply}</td>
+                <td>${liveasset.maxSupply}</td>
+                <td>${liveasset.marketCapUsd}</td>
+                <td>${liveasset.volumeUsd24Hr}</td>
+                <td>${liveasset.priceUsd}</td>
+                <td>${liveasset.changePercent24Hr}</td>
+                <td>${liveasset.vwap24Hr}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</template>

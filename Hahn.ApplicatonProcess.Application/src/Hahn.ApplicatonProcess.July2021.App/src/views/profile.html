@@ -1,0 +1,154 @@
+<template>
+  <div class="container-fluid">
+    <compose view-model="./header"></compose>
+    <div class="row">
+      <div class="col-md-12">
+        
+        <form submit.trigger="validateCreateProfile()">
+
+          <div
+            class="form-group"
+            validation-errors.bind="firstnameErrors"
+            class.bind="firstnameErrors.length ? 'has-error' : ''"
+          >
+            <label for="firstname" i18n="profile.FirstName">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              class.bind="firstnameErrors.length ? 'is-invalid' : ''"
+              id="firstname"
+              name="firstname"
+              placeholder="Enter First Name"
+              value.bind="profile.firstname & validate"
+            />
+          </div>
+
+          <div
+            class="form-group"
+            validation-errors.bind="lastnameErrors"
+            class.bind="lastnameErrors.length ? 'has-error' : ''"
+          >
+            <label for="lastname" i18n="profile.LastName">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              class.bind="lastnameErrors.length ? 'is-invalid' : ''"
+              id="lastname"
+              name="lastname"
+              placeholder="Enter Last Name"
+              value.bind="profile.lastname & validate"
+            />
+          </div>
+
+          <div
+            class="form-group"
+            validation-errors.bind="emailErrors"
+            class.bind="emailErrors.length ? 'has-error' : ''"
+          >
+            <label for="email" i18n="profile.EMailAddress">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              class.bind="emailErrors.length ? 'is-invalid' : ''"
+              id="email"
+              name="email"
+              placeholder="Enter Email"
+              value.bind="profile.email & validate"
+            />
+          </div>
+
+          <div
+            class="form-group"
+            validation-errors.bind="ageErrors"
+            class.bind="ageErrors.length ? 'has-error' : ''"
+          >
+            <label for="age" i18n="profile.Age">Age</label>
+            <input
+              type="number"
+              class="form-control"
+              class.bind="ageErrors.length ? 'is-invalid' : ''"
+              id="age"
+              name="age"
+              placeholder="Enter age"
+              value.bind="profile.age & validate"
+            />
+          </div>
+
+          <div
+            class="form-group"
+            validation-errors.bind="housenumberErrors"
+            class.bind="housenumberErrors.length ? 'has-error' : ''"
+          >
+            <label for="housenumber" i18n="profile.HouseNumber">House Number</label>
+            <input
+              type="text"
+              class="form-control"
+              class.bind="housenumberErrors.length ? 'is-invalid' : ''"
+              id="housenumber"
+              name="housenumber"
+              placeholder="Enter House Number"
+              value.bind="profile.address.housenumber & validate"
+            />
+          </div>
+
+          <div
+            class="form-group"
+            validation-errors.bind="streetErrors"
+            class.bind="streetErrors.length ? 'has-error' : ''"
+          >
+            <label for="street" i18n="profile.Street">Street</label>
+            <input
+              type="text"
+              class="form-control"
+              class.bind="streetErrors.length ? 'is-invalid' : ''"
+              id="street"
+              name="street"
+              placeholder="Enter Street Number"
+              value.bind="profile.address.street & validate"
+            />
+          </div>
+
+          <div
+            class="form-group"
+            validation-errors.bind="postalcodeErrors"
+            class.bind="postalcodeErrors.length ? 'has-error' : ''"
+          >
+            <label for="postalcode" i18n="profile.PostalCode">Postal Code</label>
+            <input
+              type="text"
+              class="form-control"
+              class.bind="postalcodeErrors.length ? 'is-invalid' : ''"
+              id="postalcode"
+              name="postalcode"
+              placeholder="Enter Postal Code"
+              value.bind="profile.address.postalcode & validate"
+            />
+          </div>
+
+          <div class="form-footer">
+            <button
+              type="submit"
+              class="btn btn-success"
+              disabled.bind="!canSave"
+              style="cursor: pointer"
+            >
+              Send
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-danger"
+              click.delegate="clearData()"
+              disabled.bind="!canReset"
+              style="cursor: pointer"
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</template>

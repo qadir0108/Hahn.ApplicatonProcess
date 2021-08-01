@@ -1,0 +1,36 @@
+<template>
+  <div class="container-fluid">
+    <compose view-model="./header"></compose>
+    <div class="row">
+      <div class="col-md-12">
+        
+        <div class="table-responsive">
+          <table class="table table-striped" datavalue.bind="remoteassets">
+            <thead class="thead-dark">
+              <tr>
+                <th>Id</th>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>#</th>
+              </tr>
+            </thead>
+
+            <tbody if.bind="remoteassets.length">
+              <tr repeat.for="asset of remoteassets">
+                <td>${asset.id}</td>
+                <td>${asset.symbol}</td>
+                <td>${asset.name}</td>
+                <td>
+                  <button click.delegate="trackAsset(asset.id, true)" class="btn btn-success" i18n="lblTrackAsset">Track</button>
+                  <button click.delegate="trackAsset(asset.id, false)" class="btn btn-danger" i18n="lblUnTrackAsset">UnTrack</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</template>

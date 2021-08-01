@@ -1,0 +1,48 @@
+<template>
+  <div class="container-fluid">
+    <compose view-model="./header"></compose>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card text-center">
+          <div class="card-header">
+            Welcome, ${user.firstName} ${user.lastName}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Hahn Assets Tracker</h5>
+            <p class="card-text">Here is list of all assets you track. Go to track more and see live tracking!</p>
+            <a route-href="route: TrackAssets" class="btn btn-primary btn-lg">Go Track</a>
+          </div>
+          <div class="card-footer text-muted">
+            Made with ❤️ from Pakistan
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        
+        <div class="table-responsive">
+          <table class="table table-striped" datavalue.bind="remoteassets">
+            <thead class="thead-dark">
+              <tr>
+                <th>Id</th>
+                <th>Symbol</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+
+            <tbody if.bind="user.assets.length">
+              <tr repeat.for="asset of user.assets">
+                <td>${asset.id}</td>
+                <td>${asset.symbol}</td>
+                <td>${asset.name}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</template>

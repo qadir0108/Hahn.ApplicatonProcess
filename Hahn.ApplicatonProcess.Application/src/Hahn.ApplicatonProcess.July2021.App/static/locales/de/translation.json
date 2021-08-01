@@ -1,0 +1,21 @@
+{
+  "btnProfile": "Profil",
+  "lblProfile": "Profil erstellen",
+  "btnHome": "Heim",
+  "lblHome": "Heim",
+  "btnTrack": "Verfolgen",
+  "lblTrack": "Assets Verfolgen",
+  "btnLive": "Echtzeit",
+  "lblLive": "Live-Assets Anzeigen",
+  "lblTrackAsset": "Verfolgen",
+  "lblUnTrackAsset": "Aufheben",
+  "profile": {
+    "FirstName": "Vorname",
+    "LastName": "Familienname",
+    "EMailAddress": "Email",
+    "Age": "Alter",
+    "HouseNumber": "Hausnummer",
+    "Street": "Straße",
+    "PostalCode": "Postleitzahl"
+  }
+}
